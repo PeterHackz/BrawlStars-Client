@@ -10,9 +10,7 @@ if (isNaN(args[1])) {
     Debugger.fatal("port should be an integer, received", args[1]);
 }
 
-if (args[2] == "dump") {
-    global.dump = true;
-}
+global.dump = args[2] == "dump";
 
 global.String.prototype.format = function(...args) {
     return args.reduce((p, c) => p.replace(/{}/, c), this);
