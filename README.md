@@ -1,6 +1,8 @@
 # BrawlStars-Client
 client for brawl stars v46 prod server
 
+it's been a while since someone shared something like this 🙃
+
 # NOTE
 This content is not affiliated with, endorsed,sponsored, or specifically approved by supercell and supercell is not responsible for it.
 
