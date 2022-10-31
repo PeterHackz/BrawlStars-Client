@@ -1,0 +1,14 @@
+{
+  "name": "brawlstars-client",
+  "version": "1.0.0",
+  "description": "an unofficial brawl stars client",
+  "main": "Program.js",
+  "scripts": {
+    "test": "node Program.js"
+  },
+  "author": "S.B#0056 & risporce#6552",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
