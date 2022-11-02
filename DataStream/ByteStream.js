@@ -86,7 +86,7 @@ module.exports = class {
         return Boolean(this.read());
     }
     readString() {
-        len = this.readInt();
+        var len = this.readInt();
         if (len <= 0 || len == 4294967295) {
             return "";
         }
