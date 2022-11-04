@@ -25,7 +25,7 @@ module.exports = class {
     }
     increment() {
         var temp = Buffer.from(this.nonce);
-        temp.writeInt16LE(temp.readInt16LE(0) + 2, 0);
+        temp.writeInt32LE(temp.readInt32LE(0) + 2, 0);
         this.nonce = new Uint8Array(temp);
     }
 }
