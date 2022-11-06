@@ -23,7 +23,7 @@ node Program.js game.brawlstarsgame.com 9339 dump
 ```
 
 # credits
-this project was made by S.B#0056 and risporce#6552
+this project was made by [S.B#0056](https://github.com/HaccerCat) and [risporce#6552](https://github.com/risporce)
 
 ## give a 🌟 because why not :p
 
