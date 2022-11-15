@@ -69,6 +69,11 @@ module.exports = class {
         if (a1 == 0) return;
         this.writeVInt(a2);
     }
+    readDataReference() {
+        var a1 = this.readVInt();
+        var a2 = this.readVInt();
+        return [a1, a2];
+    }
     readInt() {
         return (this.read() << 24 | this.read() << 16 | this.read() << 8 | this.read());
     }
