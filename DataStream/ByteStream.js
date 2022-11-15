@@ -71,6 +71,7 @@ module.exports = class {
     }
     readDataReference() {
         var a1 = this.readVInt();
+        if (a1 == 0) return [0, 0];
         var a2 = this.readVInt();
         return [a1, a2];
     }
