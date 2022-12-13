@@ -9,10 +9,10 @@ module.exports = class {
         this.ByteStream.writeInt(0); // low
         this.ByteStream.writeString(); // token
 
-        this.ByteStream.writeInt(46);
+        this.ByteStream.writeInt(47);
         this.ByteStream.writeInt(1);
-        this.ByteStream.writeInt(209);
-        this.ByteStream.writeString("e13eb3b80ac96ef51c3baa7eb25064aadfe00fed");
+        this.ByteStream.writeInt(211);
+        this.ByteStream.writeString("db748fbfc2deb455586fc0ae3a7eea562eb4c0c9");
 
         this.ByteStream.writeString();
         this.ByteStream.writeDataReference(1, 0);
