@@ -6,11 +6,11 @@ module.exports = class {
     }
     encode() {
         this.ByteStream.writeInt(2); // protocol version
-        this.ByteStream.writeInt(34); // crypto version
-        this.ByteStream.writeInt(46); // major version
+        this.ByteStream.writeInt(35); // crypto version
+        this.ByteStream.writeInt(47); // major version
         this.ByteStream.writeInt(1); // build version
-        this.ByteStream.writeInt(209); // minor version
-        this.ByteStream.writeString("e13eb3b80ac96ef51c3baa7eb25064aadfe00fed"); // master hash
+        this.ByteStream.writeInt(211); // minor version
+        this.ByteStream.writeString("db748fbfc2deb455586fc0ae3a7eea562eb4c0c9"); // master hash
         this.ByteStream.writeInt(0);
         this.ByteStream.writeInt(0);
     }
