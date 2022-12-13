@@ -9,7 +9,7 @@ const fromHexString = (hexString) => {
 
 module.exports = class {
     constructor() {
-        this.server_public_key = fromHexString("84BCCFFAEAFAC86CEFD3F16E26586ADBF1ED402481FAF3E8B0AC1FE4739B2C28");
+        this.server_public_key = fromHexString("8434902B6A7D834C222FBEE06BE5950194B70D1B9F2DF140B4A36460900E032E");
         this.client_secret_key = new Uint8Array(crypto.randomBytes(32));
         this.client_public_key = new Uint8Array(32);
         Nacl.lowlevel.crypto_scalarmult_base(this.client_public_key, this.client_secret_key);
