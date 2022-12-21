@@ -9,8 +9,8 @@ module.exports = class {
         this.ByteStream.writeInt(35); // crypto version
         this.ByteStream.writeInt(47); // major version
         this.ByteStream.writeInt(1); // build version
-        this.ByteStream.writeInt(211); // minor version
-        this.ByteStream.writeString("db748fbfc2deb455586fc0ae3a7eea562eb4c0c9"); // master hash
+        this.ByteStream.writeInt(236); // minor version
+        this.ByteStream.writeString("5613229054f0259cca492bc2e27164e4c5c2c914"); // master hash
         this.ByteStream.writeInt(0);
         this.ByteStream.writeInt(0);
     }
