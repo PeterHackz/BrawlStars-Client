@@ -11,8 +11,8 @@ module.exports = class {
 
         this.ByteStream.writeInt(47);
         this.ByteStream.writeInt(1);
-        this.ByteStream.writeInt(211);
-        this.ByteStream.writeString("db748fbfc2deb455586fc0ae3a7eea562eb4c0c9");
+        this.ByteStream.writeInt(236);
+        this.ByteStream.writeString("5613229054f0259cca492bc2e27164e4c5c2c914");
 
         this.ByteStream.writeString();
         this.ByteStream.writeDataReference(1, 0);
