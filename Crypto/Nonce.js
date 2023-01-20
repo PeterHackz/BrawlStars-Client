@@ -1,4 +1,4 @@
-var Blake2b = require("./blake2b"),
+const Blake2b = require("./blake2b"),
 crypto = require("crypto");
 
 module.exports = class {
@@ -7,8 +7,9 @@ module.exports = class {
             this.nonce = new Uint8Array(crypto.randomBytes(24));
             return;
         }
+        
         if (input.Keys) {
-            var b2b = Blake2b.blake2bInit(24);
+            let b2b = Blake2b.blake2bInit(24);
             if (input.nonce) {
                 Blake2b.blake2bUpdate(b2b, input.nonce);
             }
@@ -24,7 +25,7 @@ module.exports = class {
         return this.nonce;
     }
     increment() {
-        var temp = Buffer.from(this.nonce);
+        let temp = Buffer.from(this.nonce);
         temp.writeInt32LE(temp.readInt32LE(0) + 2, 0);
         this.nonce = new Uint8Array(temp);
     }

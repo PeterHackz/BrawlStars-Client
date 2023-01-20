@@ -1,11 +1,9 @@
-var {
-    Queue,
-    Messaging
-} = require("../Messaging/Messaging");
+const Messaging = require("../Messaging/Messaging");
+const Queue = require("../DataStream/Queue")
 
 module.exports = function(client) {
-    var queue = new Queue();
-    var messaging = new Messaging(client, queue);
+    let queue = new Queue();
+    let messaging = new Messaging(client, queue);
     
     messaging.sendPepperAuthentication();
     

@@ -1,11 +1,6 @@
-var Nacl = require("./Nacl"),
+const Nacl = require("./Nacl"),
 Nonce = require("./Nonce"),
 crypto = require("crypto");
-
-const fromHexString = (hexString) => {
-    hexString = hexString.replaceAll(" ", "")
-    return new Uint8Array(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
-}
 
 module.exports = class {
     constructor() {
@@ -38,14 +33,14 @@ module.exports = class {
             return payload;
         } else if ([20104, 20103].includes(type)) {
             if (!this.session_key) return payload;
-            var nonce = new Nonce({
+            let nonce = new Nonce({
                 nonce: this.client_nonce.bytes(),
                 Keys: [
                     this.client_public_key,
                     this.server_public_key
                 ]
             });
-            var decrypted = Nacl.box.open.after(payload, nonce.bytes(), this.key);
+            let decrypted = Nacl.box.open.after(payload, nonce.bytes(), this.key);
             this.server_nonce = new Nonce({
                 nonce: decrypted.slice(0, 24)
             });
@@ -56,4 +51,9 @@ module.exports = class {
             return Nacl.box.open.after(payload, this.server_nonce.bytes(), this.key);
         }
     }
+}
+
+function fromHexString (hexString) {
+    hexString = hexString.replaceAll(" ", "")
+    return new Uint8Array(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
 }
