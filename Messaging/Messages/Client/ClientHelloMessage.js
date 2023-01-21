@@ -1,4 +1,4 @@
-var ByteStream = require("../../../DataStream/ByteStream");
+const ByteStream = require("../../../DataStream/ByteStream");
 
 module.exports = class {
     constructor() {

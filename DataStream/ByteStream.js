@@ -29,18 +29,16 @@ module.exports = class {
     }
     writeString(a1) {
         if (!a1) return this.writeInt(-1);
-        var b = new Uint8Array(Buffer.from(a1));
+        let b = new Uint8Array(Buffer.from(a1));
         this.writeInt(b.length);
-        for (var strOffset = 0; strOffset < b.length; strOffset++) {
+        for (let strOffset = 0; strOffset < b.length; strOffset++) {
             this.write(b[strOffset]);
         }
     }
     writeVInt(a1) {
-        var v1,
-        v2,
-        v3,
-        v1 = (((a1 >> 25) & 0x40) | (a1 & 0x3F)),
-        v2 = ((a1 ^ (a1 >> 31)) >> 6);
+        let v1 = (((a1 >> 25) & 0x40) | (a1 & 0x3F)), 
+        v2 = ((a1 ^ (a1 >> 31)) >> 6), v3
+       
         a1 >>= 6;
         if (v2 == 0) {
             this.writeByte(v1);
@@ -70,10 +68,8 @@ module.exports = class {
         this.writeVInt(a2);
     }
     readDataReference() {
-        var a1 = this.readVInt();
-        if (a1 == 0) return [0, 0];
-        var a2 = this.readVInt();
-        return [a1, a2];
+        let a1 = this.readVInt();
+        return [a1, a1 == 0 ? 0 : this.readVInt()];
     }
     readInt() {
         return (this.read() << 24 | this.read() << 16 | this.read() << 8 | this.read());
@@ -82,8 +78,8 @@ module.exports = class {
         return this.read();
     }
     readBytes(size) {
-        var result = new Uint8Array(size);
-        for (var index = 0; index < size; index++) {
+        let result = new Uint8Array(size);
+        for (let index = 0; index < size; index++) {
             result[index] = this.readByte();
         }
         return result;
@@ -92,7 +88,7 @@ module.exports = class {
         return Boolean(this.read());
     }
     readString() {
-        var len = this.readInt();
+        let len = this.readInt();
         if (len <= 0 || len == 4294967295) {
             return "";
         }
@@ -100,12 +96,9 @@ module.exports = class {
     }
     readVInt() {
         // this method is discovered by nameless#1347
-        var result = 0,
-        shift = 0,
-        b,
-        seventh,
-        msb,
-        n;
+        let result = 0,
+        shift = 0, b, seventh, msb, n;
+
         while (true) {
             b = this.read();
             if (shift == 0) {

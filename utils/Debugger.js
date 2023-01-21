@@ -1,4 +1,4 @@
-var colors = require('colors/safe');
+const colors = require('colors/safe');
 
 global.Debugger = {
     warn: function(...args) {
