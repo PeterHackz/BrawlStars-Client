@@ -4,8 +4,9 @@ const LoginMessage = require("./Messages/Client/LoginMessage");
 const PepperCrypto = require("../Crypto/PepperCrypto");
 let messages = {}
 
+let fs;
 if (dump) {
-    let fs = require("fs");
+    fs = require("fs");
     if (!fs.existsSync("./PacketsDumps")) {
         fs.mkdirSync("./PacketsDumps");
     }
