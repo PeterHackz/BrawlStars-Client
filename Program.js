@@ -2,7 +2,9 @@ const args = process.argv.slice(2);
 
 require("./utils/Debugger"); // initialize it globally
 
-if (!args[0]) {
+global.dump = args[2] == "dump" || args[0] == "dump";
+
+if (!args[0] || args[0] == "dump") {
     args[0] = "game.brawlstarsgame.com"
     Debugger.error("you forget paste ip arg! Setting an default game.brawlstarsgame.com")
 }
@@ -11,8 +13,6 @@ if (isNaN(args[1])) {
     args[1] = 9339
     Debugger.error("port should be an integer, received", args[1], ". Setting an default 9339");
 }
-
-global.dump = args[2] == "dump" || args[0] == "dump";
 
 global.String.prototype.format = function(...args) {
     return args.reduce((p, c) => p.replace(/{}/, c), this);
