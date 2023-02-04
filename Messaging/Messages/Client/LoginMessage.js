@@ -5,14 +5,14 @@ module.exports = class {
         this.ByteStream = new ByteStream();
     }
     encode() {
-        this.ByteStream.writeInt(0); // high
-        this.ByteStream.writeInt(0); // low
-        this.ByteStream.writeString(); // token
+        this.ByteStream.writeInt(settings.hi || 0); // high
+        this.ByteStream.writeInt(settings.lo || 0); // low
+        this.ByteStream.writeString(settings.token); // token
 
-        this.ByteStream.writeInt(47);
-        this.ByteStream.writeInt(1);
-        this.ByteStream.writeInt(236);
-        this.ByteStream.writeString("5613229054f0259cca492bc2e27164e4c5c2c914");
+        this.ByteStream.writeInt(settings.major);
+        this.ByteStream.writeInt(settings.build);
+        this.ByteStream.writeInt(settings.minor);
+        this.ByteStream.writeString(settings.hash);
 
         this.ByteStream.writeString();
         this.ByteStream.writeDataReference(1, 0);
