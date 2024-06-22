@@ -1,5 +1,6 @@
 # BrawlStars-Client
 client for brawl stars v47 prod server
+If you want to use newer versions, you have to put public key in Crypto/PepperCrypto.js on line 7!!!
 
 # NOTE
 This content is not affiliated with, endorsed,sponsored, or specifically approved by supercell and supercell is not responsible for it.
