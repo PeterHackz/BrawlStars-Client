@@ -6,7 +6,7 @@ module.exports = class {
     }
     encode() {
         this.ByteStream.writeInt(2); // protocol version
-        this.ByteStream.writeInt(35); // crypto version
+        this.ByteStream.writeInt(47); // crypto version
         this.ByteStream.writeInt(settings.major); // major version
         this.ByteStream.writeInt(settings.build); // build version
         this.ByteStream.writeInt(settings.minor); // minor version
