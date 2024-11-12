@@ -1,5 +1,5 @@
 # BrawlStars-Client
-client for brawl stars v47 prod server
+client for brawl stars v58 prod server
 
 # NOTE
 This content is not affiliated with, endorsed,sponsored, or specifically approved by supercell and supercell is not responsible for it.
@@ -27,6 +27,7 @@ program will gonna use default values 🙃
 
 # credits
 this project was made by [S.B#0056](https://github.com/HaccerCat) and [risporce#6552](https://github.com/risporce)
+v58 update by [@kubune](https://github.com/kubune)
 
 ## give a 🌟 because why not :p
 
