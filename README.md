@@ -27,7 +27,9 @@ program will gonna use default values 🙃
 
 # credits
 this project was made by [S.B#0056](https://github.com/HaccerCat) and [risporce#6552](https://github.com/risporce)
-v58 update by [@kubune](https://github.com/kubune)
+
+# contributors
+[@kubune](https://github.com/kubune) - updated client to game version v58
 
 ## give a 🌟 because why not :p
 
