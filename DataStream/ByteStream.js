@@ -1,32 +1,57 @@
+const zlib = require('zlib');
+
 module.exports = class {
     constructor(obj) {
         this.payload = new Uint8Array(obj);
         this.offset = 0;
     }
+
     set(obj) {
         this.payload = new Uint8Array(obj);
     }
+
     write(a1) {
         this.payload[this.offset++] = a1;
     }
-    read() {
-        return this.payload[this.offset++];
-    }
+
     writeUInt(a1) {
         this.write(a1 & 0xFF);
     }
+
     writeByte(a1) {
         this.write(a1);
     }
+
     writeBoolean(a1) {
-        this.write(a1 ? 1: 0);
+        this.write(a1 ? 1 : 0);
     }
+
     writeInt(a1) {
         this.write((a1 >> 24) & 0xFF);
         this.write((a1 >> 16) & 0xFF);
         this.write((a1 >> 8) & 0xFF);
         this.write(a1 & 0xFF);
     }
+
+    writeIntLittleEndian(value) {
+        this.write(value & 0xFF);
+        this.write((value >> 8) & 0xFF);
+        this.write((value >> 16) & 0xFF);
+        this.write((value >> 24) & 0xFF);
+    }
+
+    writeCompressedString(data) {
+        const compressedText = zlib.deflateSync(Buffer.from(data));
+        const totalLength = compressedText.length + 4;
+        this.writeInt(totalLength);
+        this.writeIntLittleEndian(data.length);
+        const newPayload = new Uint8Array(this.payload.length + compressedText.length);
+        newPayload.set(this.payload.slice(0, this.offset));
+        newPayload.set(compressedText, this.offset);
+        this.payload = newPayload;
+        this.offset += compressedText.length;
+    }
+
     writeString(a1) {
         if (!a1) return this.writeInt(-1);
         let b = new Uint8Array(Buffer.from(a1));
@@ -35,12 +60,13 @@ module.exports = class {
             this.write(b[strOffset]);
         }
     }
+
     writeVInt(a1) {
-        let v1 = (((a1 >> 25) & 0x40) | (a1 & 0x3F)), 
-        v2 = ((a1 ^ (a1 >> 31)) >> 6), v3
-       
+        let v1 = (((a1 >> 25) & 0x40) | (a1 & 0x3F)),
+            v2 = ((a1 ^ (a1 >> 31)) >> 6), v3;
+
         a1 >>= 6;
-        if (v2 == 0) {
+        if (v2 === 0) {
             this.writeByte(v1);
         } else {
             this.writeByte(v1 | 0x80);
@@ -51,7 +77,7 @@ module.exports = class {
             }
             this.writeByte((a1 & 0x7F) | v3);
             a1 >>= 7;
-            while (v2 != 0) {
+            while (v2 !== 0) {
                 v2 >>= 7;
                 v3 = 0;
                 if (v2 > 0) {
@@ -62,21 +88,26 @@ module.exports = class {
             }
         }
     }
+
     writeDataReference(a1, a2) {
         this.writeVInt(a1);
-        if (a1 == 0) return;
+        if (a1 === 0) return;
         this.writeVInt(a2);
     }
+
     readDataReference() {
         let a1 = this.readVInt();
-        return [a1, a1 == 0 ? 0 : this.readVInt()];
+        return [a1, a1 === 0 ? 0 : this.readVInt()];
     }
+
     readInt() {
         return (this.read() << 24 | this.read() << 16 | this.read() << 8 | this.read());
     }
+
     readByte() {
         return this.read();
     }
+
     readBytes(size) {
         let result = new Uint8Array(size);
         for (let index = 0; index < size; index++) {
@@ -84,24 +115,26 @@ module.exports = class {
         }
         return result;
     }
+
     readBoolean() {
         return Boolean(this.read());
     }
+
     readString() {
         let len = this.readInt();
-        if (len <= 0 || len == 4294967295) {
+        if (len <= 0 || len === 4294967295) {
             return "";
         }
         return Buffer.from(this.readBytes(len)).toString();
     }
+
     readVInt() {
-        // this method is discovered by nameless#1347
         let result = 0,
-        shift = 0, b, seventh, msb, n;
+            shift = 0, b, seventh, msb, n;
 
         while (true) {
             b = this.read();
-            if (shift == 0) {
+            if (shift === 0) {
                 seventh = (b & 0x40) >> 6;
                 msb = (b & 0x80) >> 7;
                 n = b << 1;
@@ -116,7 +149,8 @@ module.exports = class {
         }
         return (result >> 1) ^ (-(result & 1));
     }
+
     getBytes() {
         return this.payload.slice(0, this.offset);
     }
-}
+};
