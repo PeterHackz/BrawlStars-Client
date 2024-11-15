@@ -1,5 +1,6 @@
 # BrawlStars-Client
 Client for brawl stars v58 prod server.
+
 I (kubune) am improving some stuff in this project, have fun c:
 
 # NOTE
