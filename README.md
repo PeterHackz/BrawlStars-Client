@@ -33,6 +33,8 @@ this project was made by [S.B#0056](https://github.com/HaccerCat) and [risporce#
 # contributors
 [@kubune](https://github.com/kubune) - updated client to game version v58
 
+[@RyfterWasTaken](https://github.com/RyfterWasTaken) - updated hash and minor versions for v58
+
 ## give a 🌟 because why not :p
 
 # [join my discord server](https://discord.gg/b2ejYcJjqA)
