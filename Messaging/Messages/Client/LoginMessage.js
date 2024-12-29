@@ -35,7 +35,7 @@ module.exports = class {
         this.ByteStream.writeString();
         this.ByteStream.writeString();
 
-        this.ByteStream.writeCompressedString(); // Supercell ID Token
+        this.ByteStream.writeString(); // Supercell ID Session Token, must be compressed with zlib
 
         this.ByteStream.writeBoolean(false);
         this.ByteStream.writeString();
