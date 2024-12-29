@@ -29,7 +29,7 @@ program will gonna use default values 🙃
 this project was made by [S.B#0056](https://github.com/HaccerCat) and [risporce#6552](https://github.com/risporce)
 
 # contributors
-[@kubune](https://github.com/kubune) - updated client to game version v58 and small addition to bytestream to support login by Supercell ID token 
+[@kubune](https://github.com/kubune) - updated client to game version v58 and v59
 
 [@RyfterWasTaken](https://github.com/RyfterWasTaken) - updated hash and minor versions for v58
 
